@@ -2,6 +2,6 @@ package database
 
 type Participant struct {
 	Name    string
-	Draw    int
+	Draw    string
 	Contact string
 }
