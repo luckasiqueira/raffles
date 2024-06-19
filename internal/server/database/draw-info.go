@@ -1,6 +1,6 @@
 package database
 
-type Participants struct {
+type Participant struct {
 	Name    string
 	Draw    int
 	Contact string
