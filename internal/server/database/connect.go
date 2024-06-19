@@ -7,7 +7,7 @@ import (
 	"raffles/utils/info"
 )
 
-var dsn = fmt.Sprintf("%s:%s@tcp(%:%s)/%s", info.Env["DB_USER"], info.Env["DB_PASS"], info.Env["DB_HOST"], info.Env["DB_PORT"], info.Env["DB_NAME"])
+var dsn = fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", info.Env["DB_USER"], info.Env["DB_PASS"], info.Env["DB_HOST"], info.Env["DB_PORT"], info.Env["DB_NAME"])
 
 // Connect starts a database connection using .env data
 func Connect() *sql.DB {
