@@ -3,10 +3,17 @@ package controllers
 import (
 	"github.com/kataras/iris/v12"
 	"net/http"
+	"raffles/internal/frontend/components"
 	"raffles/internal/server/database"
 	"strconv"
 )
 
+// DrawAddPost /admin/add (GET)
+func DrawAdd(c iris.Context) {
+	c.RenderComponent(components.AdminAdd())
+}
+
+// DrawAddPost /admin/add (POST)
 func DrawAddPost(c iris.Context) {
 	name := c.FormValue("name")
 	contact := c.FormValue("contact")
