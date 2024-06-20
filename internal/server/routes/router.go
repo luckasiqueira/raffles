@@ -12,7 +12,7 @@ func Router(s *iris.Application) {
 	})
 	admin := s.Party("/admin")
 	{
-		admin.Get("/list", controllers.AdminList)
+		admin.Get("/list", controllers.DrawList)
 		admin.Get("/edit/{number:int8}", controllers.DrawEdit)
 
 		admin.Post("/edit/{number:int8}", controllers.DrawEditPost)

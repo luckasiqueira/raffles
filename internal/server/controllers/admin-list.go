@@ -6,8 +6,12 @@ import (
 	"raffles/internal/server/database"
 )
 
-// AdminList handles /admin/list
-func AdminList(c iris.Context) {
+// DrawList handles /admin/list
+func DrawList(c iris.Context) {
 	draws := database.DrawList()
 	c.RenderComponent(components.AdminList(draws))
+}
+
+func AdminListSingle(c iris.Context) {
+
 }
