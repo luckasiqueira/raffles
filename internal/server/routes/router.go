@@ -16,6 +16,7 @@ func Router(s *iris.Application) {
 		admin.Get("/list/{number:int8}", controllers.DrawListSingle)
 		admin.Get("/edit/{number:int8}", controllers.DrawEdit)
 
+		admin.Post("/add", controllers.DrawAdd)
 		admin.Post("/edit/{number:int8}", controllers.DrawEditPost)
 	}
 }
