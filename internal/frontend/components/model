@@ -1,0 +1,10 @@
+package components
+
+import "raffles/internal/frontend/components/parts"
+import "raffles/internal/server/database"
+
+templ Model() {
+@parts.Header()
+//BODY CONTENT HERE
+@parts.Footer()
+}
