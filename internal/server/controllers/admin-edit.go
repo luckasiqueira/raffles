@@ -32,5 +32,9 @@ func DrawEditPost(c iris.Context) {
 	}
 	contact := c.FormValue("contact")
 	status := database.DrawEdit(oldNumber, number, name, contact)
+	if status == http.StatusAccepted {
+		draw := database.DrawSingle(number)
+		c.RenderComponent(parts.DrawSingle(draw))
+	}
 	setNotification(status, c)
 }
