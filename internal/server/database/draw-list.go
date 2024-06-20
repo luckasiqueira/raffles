@@ -23,3 +23,15 @@ func DrawList() []Participant {
 	defer db.Close()
 	return draws
 }
+
+// DrawSingle receives a number, and collects participant's data of this number
+func DrawSingle(number int) Participant {
+	var p Participant
+	db := Connect()
+	err := db.QueryRow("SELECT * FROM `participants` WHERE `Draw` = ?;", number).Scan(&p.Name, &p.Draw, &p.Contact)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	defer db.Close()
+	return p
+}
