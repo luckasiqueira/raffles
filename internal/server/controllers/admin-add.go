@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-func DrawAdd(c iris.Context) {
+func DrawAddPost(c iris.Context) {
 	name := c.FormValue("name")
 	contact := c.FormValue("contact")
 	n := c.FormValue("number")
