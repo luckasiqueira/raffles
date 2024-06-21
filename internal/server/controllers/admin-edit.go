@@ -20,6 +20,7 @@ func DrawEdit(c iris.Context) {
 
 // DrawEditPost handles /admin/edit/{number} (POST)
 func DrawEditPost(c iris.Context) {
+	var draw database.Participant
 	oldNumber, err := c.Params().GetInt("number")
 	if err != nil {
 		c.StopWithStatus(http.StatusBadRequest)
@@ -33,8 +34,10 @@ func DrawEditPost(c iris.Context) {
 	contact := c.FormValue("contact")
 	status := database.DrawEdit(oldNumber, number, name, contact)
 	if status == http.StatusAccepted {
-		draw := database.DrawSingle(number)
-		c.RenderComponent(parts.DrawSingle(draw))
+		draw = database.DrawSingle(number)
+	} else {
+		draw = database.DrawSingle(oldNumber)
 	}
+	c.RenderComponent(parts.DrawSingle(draw))
 	setNotification(status, c)
 }
