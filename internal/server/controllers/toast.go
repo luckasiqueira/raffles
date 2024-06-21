@@ -16,7 +16,7 @@ const classError = "bg-red-500"
 // setNotification receives the status from every action, and creates a message to render properly the toast component
 func setNotification(status int, c iris.Context) {
 	var message string
-	var class =
+	var class = classSuccess
 	var icon = success
 	switch status {
 	case http.StatusCreated:
