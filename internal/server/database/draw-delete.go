@@ -8,7 +8,7 @@ import (
 // DrawDelete connects to DB and remove the draw for the given number
 func DrawDelete(number int) int {
 	db := Connect()
-	_, err := db.Exec("DELETE FROM `buyers` WHERE `Draw` = ?;", number)
+	_, err := db.Exec("DELETE FROM `participants` WHERE `Draw` = ?;", number)
 	if err != nil {
 		fmt.Println(err.Error())
 		return http.StatusInternalServerError
