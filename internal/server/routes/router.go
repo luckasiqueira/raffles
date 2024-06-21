@@ -18,6 +18,7 @@ func Router(s *iris.Application) {
 		admin.Get("/add", controllers.DrawAdd)
 		admin.Post("/add", controllers.DrawAddPost)
 		admin.Post("/edit/{number:int8}", controllers.DrawEditPost)
+		admin.Delete("/delete/{number:int8}", controllers.DrawDelete)
 		admin.Delete("/remove-toast", func(c iris.Context) {
 			c.HTML("<div id=\"notify\"></div>")
 		})

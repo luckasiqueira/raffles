@@ -6,8 +6,8 @@ import (
 	"raffles/internal/server/database"
 )
 
-// AdminDelete handles /admin/delete/{number} (DELETE)
-func AdminDelete(c iris.Context) {
+// DrawDelete handles /admin/delete/{number} (DELETE)
+func DrawDelete(c iris.Context) {
 	number, err := c.Params().GetInt("number")
 	if err != nil {
 		c.StopWithStatus(http.StatusBadRequest)
