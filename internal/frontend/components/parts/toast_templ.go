@@ -28,7 +28,7 @@ func Toast(class, message, icon string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div hx-swap-oob=\"true\" hx-delete=\"/admin/remove-toast\" hx-trigger=\"load delay:2s\" hx-target=\"this\" hx-swap=\"delete\" id=\"notify\" class=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div hx-swap-oob=\"true\" hx-delete=\"/admin/remove-toast\" hx-trigger=\"load delay:2s\" hx-target=\"this\" hx-swap=\"outerHTML\" id=\"notify\" class=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -1,7 +1,7 @@
 package parts
 
 templ Toast(class, message, icon string) {
-<div hx-swap-oob="true" hx-delete="/admin/remove-toast" hx-trigger="load delay:2s" hx-target="this" hx-swap="delete" id="notify" class={ "fixed bottom-4 right-4 text-white rounded-md px-4 py-3 shadow-lg flex items-center gap-3 z-50", class }>
+<div hx-swap-oob="true" hx-delete="/admin/remove-toast" hx-trigger="load delay:2s" hx-target="this" hx-swap="outerHTML" id="notify" class={ "fixed bottom-4 right-4 text-white rounded-md px-4 py-3 shadow-lg flex items-center gap-3 z-50", class }>
   <span class="text-sm font-normal"><i class={ icon }></i>&nbsp &nbsp{ message }</span>
 </div>
 }
