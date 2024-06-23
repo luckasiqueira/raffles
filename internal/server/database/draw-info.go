@@ -11,4 +11,5 @@ type Status struct {
 	Bought       int
 	Available    int
 	Done         bool
+	Winner       string
 }
