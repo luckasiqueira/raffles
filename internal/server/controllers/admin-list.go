@@ -15,7 +15,7 @@ func DrawList(c iris.Context) {
 	c.RenderComponent(components.AdminList(draws))
 }
 
-// DrawListSingle /admin/list/{number}
+// DrawListSingle handles /admin/list/{number}
 func DrawListSingle(c iris.Context) {
 	number, err := c.Params().GetInt("number")
 	if err != nil {
