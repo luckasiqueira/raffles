@@ -93,7 +93,7 @@ func Home(status database.Status) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div></div><div class=\"space-y-4\"><div class=\"border rounded-lg p-4 text-center\"><p class=\"text-2xl font-bold\">Sorteio não realizado</p><p class=\"text-6xl font-bold mt-4\">00:00:00s </p><div class=\"flex justify-center mt-4\"><button class=\"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2\">contagem regressiva para o sorteio\r</button></div></div></div></div></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div></div><div class=\"space-y-4\"><div class=\"border rounded-lg p-4 text-center\"><p class=\"text-2xl font-bold\">Sorteio não realizado</p><p class=\"text-6xl font-bold mt-4\">00:00:00s </p><p class=\"text-sm font-bold mt-4\">contagem regressiva para o sorteio</p><div class=\"flex justify-center mt-4\"><button class=\"bg-black text-white hover:text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2\">Draw Winner\r</button></div></div></div></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
