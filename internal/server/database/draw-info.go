@@ -14,3 +14,8 @@ type Status struct {
 	WinnerDraw   int
 	WinnerName   string
 }
+
+type DrawInfo struct {
+	Number    int
+	Available bool
+}
