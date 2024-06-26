@@ -2,15 +2,12 @@ package routes
 
 import (
 	"github.com/kataras/iris/v12"
-	"raffles/internal/frontend"
 	"raffles/internal/server/controllers"
 )
 
 // Router defines all routes accepted for the server, and sets it's methods and respective controllers
 func Router(s *iris.Application) {
-	s.Get("/", func(c iris.Context) {
-		c.RenderComponent(frontend.Index())
-	})
+	s.Get("/", controllers.Index)
 	admin := s.Party("/admin")
 	{
 		admin.Get("/", controllers.Home)
