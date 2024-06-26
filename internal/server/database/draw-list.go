@@ -35,3 +35,20 @@ func DrawSingle(number int) Participant {
 	defer db.Close()
 	return p
 }
+
+// DrawTaken connects to DB and checks all taken draws
+func DrawTaken() []int {
+	db := Connect()
+	rows, err := db.Query("SELECT `Draw` FROM `participants`;")
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	var taken []int
+	for rows.Next() {
+		var n int
+		rows.Scan(&n)
+		taken = append(taken, n)
+	}
+	defer db.Close()
+	return taken
+}
