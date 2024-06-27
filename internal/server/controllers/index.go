@@ -21,17 +21,23 @@ func drawStatus() []database.DrawInfo {
 	total, err := strconv.Atoi(info.Env["TOTAL_NUMS"])
 	if err != nil {
 		fmt.Println(err.Error())
+		return drawinfo
 	}
-	for i := 1; i <= total; i++ {
-		for _, j := range taken {
-			var draw database.DrawInfo
-			if i != j {
-				draw.Available = true
-			}
-			draw.Number = i
-			drawinfo = append(drawinfo, draw)
-			break
-		}
+	numbers := make([]int, total)
+	for i := range numbers {
+		var draw database.DrawInfo
+		draw.Number = i + 1
+		draw.Available = !contains(taken, draw.Number)
+		drawinfo = append(drawinfo, draw)
 	}
 	return drawinfo
+}
+
+func contains(slice []int, value int) bool {
+	for _, v := range slice {
+		if v == value {
+			return true
+		}
+	}
+	return false
 }
