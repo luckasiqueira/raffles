@@ -6,7 +6,7 @@ templ Index(drawInfo []database.DrawInfo, buyURL string) {
 <html lang="en">
    <head>
       <meta charset="UTF-8"/>
-      <title>Title</title>
+      <title>Rifa de dia dos pais</title>
       <script src="https://cdn.tailwindcss.com"></script>
    </head>
    <body>
@@ -112,7 +112,7 @@ templ Index(drawInfo []database.DrawInfo, buyURL string) {
                   <div class="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-5 lg:gap-4">
                      for i := range drawInfo {
                      if drawInfo[i].Available {
-                     <a href={ templ.URL(buyURL + fmt.Sprintf(" %d", drawInfo[i].Number) ) } target="_blank">
+                     <a href={ templ.URL(buyURL + fmt.Sprintf("Oi, quero participar da rifa com o número %d", drawInfo[i].Number) ) } target="_blank">
                      <div class="bg-background border border-input rounded-full w-12 h-12 flex items-center justify-center text-lg font-medium">
                         { fmt.Sprintf("%d", drawInfo[i].Number) }
                      </div>
