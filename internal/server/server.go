@@ -8,8 +8,11 @@ import (
 	"raffles/utils/info"
 )
 
+//go:embed assets
+var fs embed.FS
+
 // StartServer runs the iris web server and initialize all the defined routes
-func StartServer(fs embed.FS) {
+func StartServer() {
 	s := iris.New()
 	s.HandleDir("/assets", fs)
 	routes.Router(s)
