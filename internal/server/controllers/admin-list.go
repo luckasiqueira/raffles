@@ -1,12 +1,12 @@
 package controllers
 
 import (
-	"fmt"
 	"github.com/kataras/iris/v12"
 	"net/http"
 	"raffles/internal/frontend/components"
 	"raffles/internal/frontend/components/parts"
 	"raffles/internal/server/database"
+	"raffles/utils/logger"
 )
 
 // DrawList handles /admin/list
@@ -19,7 +19,7 @@ func DrawList(c iris.Context) {
 func DrawListSingle(c iris.Context) {
 	number, err := c.Params().GetInt("number")
 	if err != nil {
-		fmt.Println(err.Error())
+		logger.NewLog(err.Error())
 		c.StopWithStatus(http.StatusBadRequest)
 	}
 	draw := database.DrawSingle(number)

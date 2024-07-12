@@ -1,8 +1,8 @@
 package database
 
 import (
-	"fmt"
 	"net/http"
+	"raffles/utils/logger"
 )
 
 // DrawAdd connects do DB to create new participant's draws
@@ -11,7 +11,7 @@ func DrawAdd(number int, name, contact string) int {
 	var count int
 	err := db.QueryRow("SELECT COUNT(*) FROM `participants` WHERE `Draw` = ?;", number).Scan(&count)
 	if err != nil {
-		fmt.Println(err.Error())
+		logger.NewLog(err.Error())
 		return http.StatusInternalServerError
 	}
 	if count > 0 {
@@ -19,7 +19,7 @@ func DrawAdd(number int, name, contact string) int {
 	}
 	_, err = db.Exec("INSERT INTO `participants` (`Name`, `Draw`, `Contact`) VALUES (?, ?, ?);", name, number, contact)
 	if err != nil {
-		fmt.Println(err.Error())
+		logger.NewLog(err.Error())
 		return http.StatusInternalServerError
 	}
 	defer db.Close()

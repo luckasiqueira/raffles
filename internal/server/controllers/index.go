@@ -1,11 +1,11 @@
 package controllers
 
 import (
-	"fmt"
 	"github.com/kataras/iris/v12"
 	"raffles/internal/frontend"
 	"raffles/internal/server/database"
 	"raffles/utils/info"
+	"raffles/utils/logger"
 	"strconv"
 )
 
@@ -20,7 +20,7 @@ func drawStatus() []database.DrawInfo {
 	var drawinfo []database.DrawInfo
 	total, err := strconv.Atoi(info.Env["TOTAL_NUMS"])
 	if err != nil {
-		fmt.Println(err.Error())
+		logger.NewLog(err.Error())
 		return drawinfo
 	}
 	numbers := make([]int, total)

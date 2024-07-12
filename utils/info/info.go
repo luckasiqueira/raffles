@@ -1,8 +1,8 @@
 package info
 
 import (
-	"fmt"
 	"github.com/joho/godotenv"
+	"raffles/utils/logger"
 )
 
 var Env = info()
@@ -11,7 +11,7 @@ var Env = info()
 func info() map[string]string {
 	data, err := godotenv.Read()
 	if err != nil {
-		fmt.Println(err.Error())
+		logger.NewLog(err.Error())
 	}
 	return data
 }

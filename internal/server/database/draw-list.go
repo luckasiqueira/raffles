@@ -1,7 +1,7 @@
 package database
 
 import (
-	"fmt"
+	"raffles/utils/logger"
 )
 
 // DrawList connects to DB and get details of all participants
@@ -10,13 +10,13 @@ func DrawList() []Participant {
 	var draws []Participant
 	rows, err := db.Query("SELECT * FROM `participants`;")
 	if err != nil {
-		fmt.Println(err.Error())
+		logger.NewLog(err.Error())
 	}
 	for rows.Next() {
 		var draw Participant
 		err = rows.Scan(&draw.Name, &draw.Draw, &draw.Contact)
 		if err != nil {
-			fmt.Println(err.Error())
+			logger.NewLog(err.Error())
 		}
 		draws = append(draws, draw)
 	}
@@ -30,7 +30,7 @@ func DrawSingle(number int) Participant {
 	db := Connect()
 	err := db.QueryRow("SELECT * FROM `participants` WHERE `Draw` = ?;", number).Scan(&p.Name, &p.Draw, &p.Contact)
 	if err != nil {
-		fmt.Println(err.Error())
+		logger.NewLog(err.Error())
 	}
 	defer db.Close()
 	return p
@@ -41,7 +41,7 @@ func DrawTaken() []int {
 	db := Connect()
 	rows, err := db.Query("SELECT `Draw` FROM `participants`;")
 	if err != nil {
-		fmt.Println(err.Error())
+		logger.NewLog(err.Error())
 	}
 	var taken []int
 	for rows.Next() {
