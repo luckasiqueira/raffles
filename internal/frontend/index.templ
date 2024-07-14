@@ -2,6 +2,7 @@ package frontend
 
 import (
     "raffles/internal/server/database"
+    "fmt"
 )
 
 templ Index(drawInfo []database.DrawInfo, buyURL string) {
@@ -10,7 +11,7 @@ templ Index(drawInfo []database.DrawInfo, buyURL string) {
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Raffle Extravaganza</title>
+    <title>Rifa de dia dos pais</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
     <style>
         /* Custom dark mode styles */
@@ -59,149 +60,86 @@ templ Index(drawInfo []database.DrawInfo, buyURL string) {
             <span class="sr-only">Raffle Extravaganza</span>
         </a>
         <nav class="ml-auto flex gap-4 sm:gap-6">
-            <a class="text-sm font-medium hover:underline underline-offset-4 text-gray-400 hover:text-gray-200" href="#">
-                How it Works
+            <a class="text-sm font-medium hover:underline underline-offset-4 text-gray-400 hover:text-gray-200" href="#about">
+                O sorteio
             </a>
-            <a class="text-sm font-medium hover:underline underline-offset-4 text-gray-400 hover:text-gray-200" href="#">
-                Past Winners
+            <a class="text-sm font-medium hover:underline underline-offset-4 text-gray-400 hover:text-gray-200" href="#numbers">
+                Números
             </a>
-            <a class="text-sm font-medium hover:underline underline-offset-4 text-gray-400 hover:text-gray-200" href="#">
-                Contact
+            <a class="text-sm font-medium hover:underline underline-offset-4 text-gray-400 hover:text-gray-200" href="#participate">
+                Participar
             </a>
         </nav>
     </header>
     <main class="flex-1">
         <section class="w-full pt-12 md:pt-24 lg:pt-32 border-y border-gray-700">
             <div class="px-4 md:px-6 space-y-10 xl:space-y-16">
-                <div class="grid max-w-[1300px] mx-auto gap-4 px-4 sm:px-6 md:px-10 md:grid-cols-2 md:gap-16">
+                <div class="grid max-w-[1300px] mx-auto gap-4 px-4 sm:px-6 md:px-10 md:grid-cols-2 md:gap-16 items-center">
                     <img
-                                                src="/assets/img/perfume.jpg"
-                                                width="550"
-                                                height="550"
-                                                alt="Raffle"
-                                                class="mx-auto aspect-square overflow-hidden rounded-xl object-cover"
-                                        />
-                    <div class="text-center sm:text-left">
+                        src="/assets/img/perfume.jpg"
+                        width="550"
+                        height="550"
+                        alt="Raffle"
+                        class="mx-auto aspect-square overflow-hidden rounded-xl object-cover"
+                    />
+                    <div class="flex flex-col items-center justify-center text-center sm:text-left">
                         <h1 class="lg:leading-tighter text-3xl font-bold tracking-tighter text-gray-200 sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
-                            Win Big with Our Raffle!
+                            Rifa de Dia dos Pais
                         </h1>
                         <p class="mx-auto max-w-[700px] text-gray-400 md:text-xl">
-                            Don't miss your chance to win amazing prizes! Purchase your raffle tickets now and get ready for the big draw.
+                            Participe da nossa rifa e concorra ao prêmio de um Kit do perfume The Secret de Antonio Banderas, avaliado no valor de R$239,00.
                         </p>
-                        <div class="mt-6">
+                        <div class="mt-6 flex space-x-4">
                             <a
-                                    class="inline-flex h-10 items-center justify-center rounded-md bg-gray-600 px-8 text-sm font-medium text-gray-200 shadow transition-colors hover:bg-gray-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-400 disabled:pointer-events-none disabled:opacity-50"
-                                    href="#"
+                                class="inline-flex h-10 items-center justify-center rounded-md bg-gray-600 px-8 text-sm font-medium text-gray-200 shadow transition-colors hover:bg-gray-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-400 disabled:pointer-events-none disabled:opacity-50"
+                                href="#"
                             >
-                                Buy Tickets
+                                Comprar números
+                            </a>
+                            <a
+                                class="inline-flex h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-gray-700 shadow transition-colors hover:bg-gray-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-400 disabled:pointer-events-none disabled:opacity-50"
+                                href="#"
+                            >
+                                Sobre a rifa
                             </a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
-        <section class="w-full py-12 md:py-24 lg:py-32">
+        <section id="numbers" class="w-full py-12 md:py-24 lg:py-32">
             <div class="container px-4 md:px-6">
                 <div class="flex flex-col items-center justify-center space-y-4 text-center">
                     <div class="space-y-2">
-                        <div class="inline-block rounded-lg bg-gray-700 px-3 py-1 text-sm text-gray-400">Available Raffle Numbers</div>
-                        <h2 class="text-3xl font-bold tracking-tighter text-gray-200 sm:text-5xl">Grab Your Ticket Now</h2>
+                        <div class="inline-block rounded-lg bg-gray-700 px-3 py-1 text-sm text-gray-400">Números disponíveis</div>
+                        <h2 class="text-3xl font-bold tracking-tighter text-gray-200 sm:text-5xl">Escolha seu número</h2>
                         <p class="max-w-[900px] text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                            Check out the remaining available numbers and secure your spot in the raffle. Don't wait, these tickets are going fast!
+                            Cada número custa apenas R$15,00. Não perca a sua chance de ganhar!
                         </p>
                     </div>
                 </div>
-                <div class="mx-auto grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 py-8">
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">1</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">2</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">3</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">4</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">5</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">6</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">7</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">8</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">9</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">10</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">11</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">12</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">13</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">14</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">15</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">16</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">17</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">18</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">19</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">20</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">21</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">22</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">23</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">24</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">25</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">26</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">27</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">28</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">29</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">30</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">31</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">32</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">33</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">34</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">35</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">36</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">37</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">38</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">39</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">40</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">41</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">42</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">43</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">44</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">45</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">46</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">47</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">48</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">49</div>
-                    <div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">50</div>
+                <div class="mx-auto grid grid-cols-5 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-4 py-8">
+                    for i := range drawInfo {
+                        if drawInfo[i].Available {
+                   <a href={ templ.URL(buyURL + fmt.Sprintf("Oi, eu quero participar da rifa com o %d!", drawInfo[i].Number)) } target="_blank"><div class="bg-gray-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">{ fmt.Sprintf("%d", drawInfo[i].Number) } </div></a>
+                        } else {
+                   <div class="bg-red-700 rounded-full px-4 py-2 text-center text-sm font-medium text-gray-200">{ fmt.Sprintf("%d", drawInfo[i].Number) } </div>
+                        }
+                    }
                 </div>
             </div>
         </section>
-        <section class="w-full py-12 md:py-24 lg:py-32">
-            <div class="container px-4 md:px-6">
-                <div class="grid gap-8 md:grid-cols-2 lg:gap-12"></div>
-            </div>
-        </section>
-        <section class="w-full py-12 md:py-24 lg:py-32 bg-gray-700">
-            <div class="container px-4 md:px-6">
-                <div class="flex flex-col items-center justify-center gap-8 md:grid-cols-2 lg:gap-12">
-                    <div class="space-y-4 text-center sm:text-left">
-                        <h2 class="text-3xl font-bold tracking-tighter text-gray-200 md:text-4xl/tight">Don't Miss Your Chance to Win Big</h2>
-                        <p class="max-w-[700px] text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                            With limited tickets available, now is the time to secure your spot in the raffle. Don't wait, purchase your tickets today and get ready for the big draw.
-                        </p>
-                        <div class="mt-6">
-                            <a
-                                    class="inline-flex h-10 items-center justify-center rounded-md bg-gray-600 px-8 text-sm font-medium text-gray-200 shadow transition-colors hover:bg-gray-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-400 disabled:pointer-events-none disabled:opacity-50"
-                                    href="#"
-                            >
-                                Buy Tickets
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="w-full py-12 md:py-24 lg:py-32">
+        <section id="about" class="w-full py-12 md:py-24 lg:py-32">
             <div class="container px-4 md:px-6">
                 <div class="space-y-4 text-center">
-                    <h2 class="text-3xl font-bold tracking-tighter text-gray-200 sm:text-4xl md:text-5xl">Introducing Our Grand Prize</h2>
+                    <h2 class="text-3xl font-bold tracking-tighter text-gray-200 sm:text-4xl md:text-5xl">Valendo um KIT Antonio Banderas</h2>
                     <p class="mx-auto max-w-[700px] text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                        Don't miss your chance to win an all-expenses-paid luxury vacation to a tropical paradise. This once-in-a-lifetime opportunity could be yours!
+                        A rifa vai premiar o sorteado com um Kit do perfume The Secret de Antonio Banderas. <br/>O sorteio será realizado no dia 09/08/24.
                     </p>
                 </div>
                 <div class="mt-8">
                     <img
-                            src="/placeholder.svg"
+                            src="/assets/img/bg.jpg"
                             width="1200"
                             height="600"
                             alt="Grand Prize"
@@ -210,7 +148,27 @@ templ Index(drawInfo []database.DrawInfo, buyURL string) {
                 </div>
             </div>
         </section>
-    </main>
+        <section id="participate" class="w-full py-12 md:py-24 lg:py-32 bg-gray-700">
+            <div class="container px-4 md:px-6">
+                <div class="flex flex-col items-center justify-center gap-8 md:grid-cols-2 lg:gap-12">
+                    <div class="space-y-4 text-center">
+                        <h2 class="text-3xl font-bold tracking-tighter text-gray-200 md:text-4xl/tight">Participe Agora</h2>
+                        <p class="max-w-[700px] text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                            Não perca a sua chance de concorrer a prêmios incríveis. Compre seus números agora mesmo!
+                        </p>
+                        <div class="mt-6">
+                            <a
+                                class="inline-flex h-10 items-center justify-center rounded-md bg-gray-600 px-8 text-sm font-medium text-gray-200 shadow transition-colors hover:bg-gray-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-400 disabled:pointer-events-none disabled:opacity-50"
+                                href={ templ.URL(buyURL + fmt.Sprintf("Oi, eu quero participar da rifa!")) }
+                            >
+                                Quero participar!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main><!--
     <footer class="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t border-gray-700">
         <p class="text-xs text-gray-400 text-center sm:text-left">
             © 2024 Raffle Extravaganza. All rights reserved.
@@ -223,9 +181,8 @@ templ Index(drawInfo []database.DrawInfo, buyURL string) {
                 Privacy Policy
             </a>
         </nav>
-    </footer>
+    </footer>-->
 </div>
 </body>
 </html>
-
 }
