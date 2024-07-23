@@ -14,7 +14,7 @@ func DrawList() []Participant {
 	}
 	for rows.Next() {
 		var draw Participant
-		err = rows.Scan(&draw.Name, &draw.Draw, &draw.Contact)
+		err = rows.Scan(&draw.Name, &draw.Draw, &draw.Contact, &draw.Paid)
 		if err != nil {
 			logger.NewLog(err.Error())
 		}
@@ -28,7 +28,7 @@ func DrawList() []Participant {
 func DrawSingle(number int) Participant {
 	var p Participant
 	db := Connect()
-	err := db.QueryRow("SELECT * FROM `participants` WHERE `Draw` = ?;", number).Scan(&p.Name, &p.Draw, &p.Contact)
+	err := db.QueryRow("SELECT * FROM `participants` WHERE `Draw` = ?;", number).Scan(&p.Name, &p.Draw, &p.Contact, &p.Paid)
 	if err != nil {
 		logger.NewLog(err.Error())
 	}

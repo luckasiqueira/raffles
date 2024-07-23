@@ -23,7 +23,11 @@ func DrawStatus() Status {
 	if err != nil {
 		logger.NewLog(err.Error())
 	}
-	status.Available = 50 - n
+	numbers, err := strconv.Atoi(info.Env["TOTAL_NUMS"])
+	if err != nil {
+		logger.NewLog(err.Error())
+	}
+	status.Available = numbers - n
 	err = db.QueryRow("SELECT `Status` FROM `status` WHERE 1").Scan(&done)
 	if err != nil {
 		logger.NewLog(err.Error())

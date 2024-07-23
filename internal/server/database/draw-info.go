@@ -4,6 +4,7 @@ type Participant struct {
 	Name    string
 	Draw    string
 	Contact string
+	Paid    int8
 }
 
 type Status struct {

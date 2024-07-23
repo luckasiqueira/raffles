@@ -6,7 +6,7 @@ import (
 )
 
 // DrawAdd connects do DB to create new participant's draws
-func DrawAdd(number int, name, contact string) int {
+func DrawAdd(number int, name, contact string, paid int) int {
 	db := Connect()
 	var count int
 	err := db.QueryRow("SELECT COUNT(*) FROM `participants` WHERE `Draw` = ?;", number).Scan(&count)
@@ -17,7 +17,7 @@ func DrawAdd(number int, name, contact string) int {
 	if count > 0 {
 		return http.StatusConflict
 	}
-	_, err = db.Exec("INSERT INTO `participants` (`Name`, `Draw`, `Contact`) VALUES (?, ?, ?);", name, number, contact)
+	_, err = db.Exec("INSERT INTO `participants` (`Name`, `Draw`, `Contact`, `Paid`) VALUES (?, ?, ?, ?);", name, number, contact, paid)
 	if err != nil {
 		logger.NewLog(err.Error())
 		return http.StatusInternalServerError

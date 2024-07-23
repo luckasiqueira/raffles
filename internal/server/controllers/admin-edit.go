@@ -32,7 +32,15 @@ func DrawEditPost(c iris.Context) {
 		c.StopWithStatus(http.StatusBadRequest)
 	}
 	contact := c.FormValue("contact")
-	status := database.DrawEdit(oldNumber, number, name, contact)
+	p := c.PostValue("paid")
+	paid, err := strconv.Atoi(p)
+	if err != nil {
+		c.StopWithStatus(http.StatusBadRequest)
+	}
+	if paid != 1 {
+		paid = 0
+	}
+	status := database.DrawEdit(oldNumber, number, name, contact, paid)
 	if status == http.StatusAccepted {
 		draw = database.DrawSingle(number)
 	} else {

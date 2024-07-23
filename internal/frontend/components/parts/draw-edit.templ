@@ -1,7 +1,5 @@
 package parts
-
 import "raffles/internal/server/database"
-
 templ DrawEditing(draw database.Participant) {
 <tr id={ draw.Draw } class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
    <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
@@ -32,41 +30,50 @@ templ DrawEditing(draw database.Participant) {
          />
    </td>
    <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+      <div class="flex items-center justify-between space-y-2">
+         <label class="relative inline-flex cursor-pointer items-center">
+         <input id="paid" type="checkbox" name="paid" value="1" class="peer sr-only" />
+         <label for="paid" class="hidden"></label>
+         <div class="peer h-6 w-11 rounded-full border bg-slate-200 after:absolute after:left-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-slate-800 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-green-300"></div>
+         </label>
+      </div>
+   </td>
+   <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
       <div>
-         <button hx-post={ "/admin/edit/" + draw.Draw } hx-target="closest tr" hx-swap="outerHTML" hx-include="#name, #contact, #draw" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10">
-            <svg
-               xmlns="http://www.w3.org/2000/svg"
-               width="24"
-               height="24"
-               viewBox="0 0 24 24"
-               fill="none"
-               stroke="currentColor"
-               stroke-width="2"
-               stroke-linecap="round"
-               stroke-linejoin="round"
-               class="h-4 w-4"
-               >
-               <path d="M20 6 9 17l-5-5"></path>
-            </svg>
-            <span class="sr-only">Save</span>
+         <button hx-post={ "/admin/edit/" + draw.Draw } hx-target="closest tr" hx-swap="outerHTML" hx-include="#name, #contact, #draw, #paid" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10">
+         <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-4 w-4"
+            >
+            <path d="M20 6 9 17l-5-5"></path>
+         </svg>
+         <span class="sr-only">Save</span>
          </button>
          <button hx-get={ "/admin/list/" + draw.Draw } hx-target="closest tr" hx-swap="outerHTML" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10">
-            <svg
-               xmlns="http://www.w3.org/2000/svg"
-               width="24"
-               height="24"
-               viewBox="0 0 24 24"
-               fill="none"
-               stroke="currentColor"
-               stroke-width="2"
-               stroke-linecap="round"
-               stroke-linejoin="round"
-               class="h-4 w-4"
-               >
-               <path d="M18 6 6 18"></path>
-               <path d="m6 6 12 12"></path>
-            </svg>
-            <span class="sr-only">Cancel</span>
+         <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-4 w-4"
+            >
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+         </svg>
+         <span class="sr-only">Cancel</span>
          </button>
       </div>
    </td>
