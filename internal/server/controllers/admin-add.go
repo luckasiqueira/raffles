@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"github.com/kataras/iris/v12"
 	"net/http"
 	"raffles/internal/frontend/components"
@@ -25,7 +24,6 @@ func DrawAddPost(c iris.Context) {
 		status = http.StatusInternalServerError
 	}
 	p := c.FormValue("paid")
-	fmt.Println("Paid antes:", p)
 	paid, err := strconv.Atoi(p)
 	if err != nil {
 		status = http.StatusInternalServerError
@@ -33,7 +31,6 @@ func DrawAddPost(c iris.Context) {
 	if paid != 1 {
 		paid = 0
 	}
-	fmt.Println("Paid depois:", paid)
 	status = database.DrawAdd(number, name, contact, paid)
 	setNotification(status, c)
 }
