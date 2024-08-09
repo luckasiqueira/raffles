@@ -1,0 +1,11 @@
+package parts
+
+templ DrawWinnerLoading() {
+    <img hx-get="/admin/winner" hx-trigger="load delay:2s" hx-swap="outerHTML" alt="Result loading..." class="loading" id="drawstatus" width="150" src="/assets/img/bars.svg"/>
+}
+
+templ DrawWinnerInfo() {
+    <p class="text-2xl font-bold" id="drawstatus">Sorteio realizado!</p>
+    <p class="text-6xl font-bold mt-4">VENCEDOR (XX)</p>
+    <p class="text-sm font-bold mt-4">venceu o sorteio realizado em xx/xx/xxxx</p>
+}
